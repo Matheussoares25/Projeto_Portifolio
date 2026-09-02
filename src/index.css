@@ -1,0 +1,338 @@
+/* ===== Tokens de cor e tipografia ===== */
+:root {
+  --bg-base: #0A0E1A;       /* fundo principal, quase preto-azulado */
+  --bg-card: #12162A;       /* fundo dos cards/blocos de conteúdo */
+  --bg-card-alt: #171C33;   /* fundo levemente mais claro (hover, tags) */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --accent: #3A86FF;        /* azul elétrico - destaque, ícones, links, tags */
+  --accent-soft: rgba(58, 134, 255, 0.12);
+  --text-light: #E9ECEF;
+  --text-muted: #8A94A6;
+
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-light);
+  font-family: var(--font-body);
+
+  /* fundo moderno: leve textura de grid + "glows" azuis desfocados nos cantos */
+  background-image:
+    linear-gradient(var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px),
+    radial-gradient(circle at 12% 8%, rgba(58, 134, 255, 0.16) 0%, transparent 35%),
+    radial-gradient(circle at 88% 15%, rgba(58, 134, 255, 0.10) 0%, transparent 30%),
+    radial-gradient(circle at 50% 100%, rgba(58, 134, 255, 0.08) 0%, transparent 40%);
+  background-size: 48px 48px, 48px 48px, 100% 100%, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+}
+
+/* segurança: evita que o Bootstrap deixe parágrafos com cor escura padrão */
+p {
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, .navbar-brand {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* ===== Eyebrow (rótulo pequeno acima dos títulos de seção) ===== */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(58, 134, 255, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+/* título de seção com linha de destaque centralizada embaixo */
+.section-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  background-color: rgba(10, 14, 26, 0.9) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.navbar-brand {
+  color: var(--text-light) !important;
+  font-weight: 700;
+}
+
+.navbar-brand .accent {
+  color: var(--accent);
+}
+
+.nav-link {
+  color: var(--text-light) !important;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent) !important;
+}
+
+/* ===== Hero ===== */
+#home {
+  background-color: var(--bg-base);
+  position: relative;
+}
+
+#home h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+}
+
+#home .lead {
+  color: var(--text-muted);
+}
+
+#home .prompt {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(58, 134, 255, 0.6);
+}
+
+#home h1 {
+  text-shadow: 0 0 20px rgba(58, 134, 255, 0.15);
+}
+
+/* ===== Blocos de conteúdo (Sobre, cards de texto) ===== */
+.content-block {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 2rem;
+  color: var(--text-light) !important;
+}
+
+.content-block p {
+  color: var(--text-light) !important;
+  line-height: 1.7;
+}
+
+/* ===== Tags/badges no estilo "C# / WINDOWS FORMS" ===== */
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.skill-pill {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.skill-pill:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.skill-pill .icon {
+  font-size: 1.6rem;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+/* ===== Filtros (Todos / C# / React + Node.js...) ===== */
+.filter-btn {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-light);
+  border-radius: 8px;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-btn.active {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg-base);
+  font-weight: 600;
+}
+
+/* ===== Seções ===== */
+section {
+  background-color: transparent;
+}
+
+/* ===== Cards de projeto ===== */
+.card {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: 12px;
+  color: var(--text-light) !important;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card-body {
+  background-color: var(--bg-card) !important;
+  color: var(--text-light) !important;
+}
+
+.card-img-top {
+  height: 185px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent) !important;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  color: var(--text-light) !important;
+  font-weight: 700;
+}
+
+.card-text {
+  color: var(--text-muted) !important;
+}
+
+/* ===== Cards de organização/equipe ===== */
+.org-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 1.75rem;
+}
+
+.repo-pill {
+  background-color: var(--bg-card-alt);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* ===== Botões ===== */
+.btn-primary {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: #2f6fd6;
+  border-color: #2f6fd6;
+}
+
+.btn-outline-primary {
+  color: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--accent);
+  color: var(--bg-base);
+}
+
+.btn-dark,
+.btn-secondary {
+  background-color: var(--bg-card);
+  border-color: var(--border-subtle);
+  color: var(--text-light);
+}
+
+.btn-dark:hover,
+.btn-secondary:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg-base);
+}
+
+/* ===== Modal (Ver mais dos projetos) ===== */
+.modal-content {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-light) !important;
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--border-subtle) !important;
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  color: var(--text-light) !important;
+}
+
+.modal-body {
+  color: var(--text-light) !important;
+}
+
+.modal-body p {
+  color: var(--text-muted) !important;
+}
+
+/* fundo escurecido atrás do modal (backdrop) */
+.modal-backdrop.show {
+  opacity: 0.75 !important;
+  background-color: #000 !important;
+}
+
+/* ===== Rodapé ===== */
+footer {
+  background-color: var(--bg-base) !important;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+}
