@@ -53,6 +53,16 @@ const projetos = [
         descricao: "",
         video: "",
         github: ""
+    },
+    {
+            id: "SisAlu",
+            title: "Pagina SisAlu- SisAlu - Sistema de Gestão Escolar",
+            imag:  "sisalu",
+            tecnologias: "Web / HTML / JavaScript / css",
+            descricao: "Um Protótipo da pagina web da Sisalu desenvolvido durante meu estagio, desenvolvido com objeto de aprimorar minhas habilidades com Html,css e algumas bibliotecas como o Bootstrap.",
+            video: "",
+            github: "",
+
     }
     // {
     //     id:
@@ -86,6 +96,26 @@ const language = [
     { nome: 'PHP', icone: '' },
     { nome: 'AspNet', icone: '' }
 ];
+
+const formacao = [
+    {
+        id: "metodista",
+        curso: "Análise e Desenvolvimento de Sistemas",
+        instituicao: "Universidade Metodista de São Paulo",
+        status: "Em andamento",
+        progresso: 30,
+        descricao: "Graduação com foco em engenharia e arquitetura de software, ampliando os conhecimentos técnicos adquiridos na formação anterior."
+    },
+    {
+        id: "etec",
+        curso: "Técnico em Desenvolvimento de Sistemas",
+        instituicao: "ETEC Juscelino Kubitschek de Oliveira",
+        status: "Concluído",
+        progresso: 100,
+        descricao: "Formação técnica com foco em lógica de programação, orientação a objetos e bancos de dados. Desenvolvimento de projetos práticos em C#, PHP e ecossistema web (HTML, CSS, JavaScript)."
+    }
+
+];;
 
 function Home() {
     const [skillSelecionada, setSkillSelecionada] = useState("");
@@ -286,7 +316,45 @@ function Home() {
             </section>
 
             <section>
-                <h2 className="section-title" id="formacao">Vida Academica</h2>
+                <div className="container">
+                    <div className="eyebrow"><i className="bi bi-mortarboard-fill"></i> FORMAÇÃO</div>
+                    <h2 className="section-title">Vida Acadêmica</h2>
+
+                    <div className="timeline col-lg-8 mx-auto">
+                        {formacao.map((item, index) => (
+                            <div
+                                className="timeline-item"
+                                key={item.id}
+                                data-aos="fade-up"
+                                data-aos-delay={index * 150}
+                            >
+                                <div className={`timeline-dot ${item.status === 'Concluído' ? 'done' : 'active'}`}></div>
+
+                                <div className="org-card timeline-content">
+                                    <div className="d-flex justify-content-between align-items-start mb-2">
+                                        <h5 className="fw-bold mb-0">{item.curso}</h5>
+                                        <span
+                                            className="tag"
+                                            style={{ color: item.status === 'Em andamento' ? 'var(--accent)' : 'var(--text-muted)' }}
+                                        >
+                                            {item.status}
+                                        </span>
+                                    </div>
+                                    <p className="tag mb-2">{item.instituicao}</p>
+                                    <p className="card-text mb-3 ">{item.descricao}</p>
+
+                                    <div className="progress-track">
+                                        <div
+                                            className="progress-fill"
+                                            style={{ width: `${item.progresso}%` }}
+                                        ></div>
+                                    </div>
+                                    <span className="progress-label">{item.progresso}% concluído 1º/Semestre</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </section>
 
             <section>
