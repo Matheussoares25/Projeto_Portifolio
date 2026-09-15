@@ -121,8 +121,8 @@ const carreira = [
     {
         id: "nauta",
         empresa: "Nauta Software",
-        cargo: "Desenvolvedor Full Stack",
-        periodo: "20XX - 20XX",
+        cargo: "Estagio Desenvolvimento Full Stack",
+        periodo: "2025 - 202026",
         descricao: "Evolução no desenvolvimento web Full Stack, atuando no código, banco de dados MySQL e otimização de relatórios.",
         atual: false
     },
@@ -130,7 +130,7 @@ const carreira = [
         id: "masterpumps",
         empresa: "Masterpumps",
         cargo: "Desenvolvedor C# / Suporte TI",
-        periodo: "20XX - Atual",
+        periodo: "2026 - Atual",
         descricao: "Desenvolvimento de soluções desktop em C#, integrando microsserviços e APIs externas para automação de processos. Atuação em suporte e infraestrutura de TI N1/N2.",
         atual: true
     },
@@ -381,29 +381,27 @@ function Home() {
                     <div className="eyebrow"><i className="bi bi-briefcase-fill"></i> EXPERIÊNCIA</div>
                     <h2 className="section-title">Carreira</h2>
 
-                    <div className="timeline-h-wrapper">
-                        <div className="timeline-h">
-                            {carreira.map((item, index) => (
-                                <div
-                                    className="timeline-h-item"
-                                    key={item.id}
-                                    data-aos="fade-up"
-                                    data-aos-delay={index * 150}
-                                >
-                                    <div className={`timeline-h-dot ${item.atual ? 'atual' : 'passado'}`}></div>
-                                    <span className="timeline-h-date">{item.periodo}</span>
+                    <div className="timeline-h">
+                        {carreira.map((item, index) => (
+                            <div
+                                className="timeline-h-item"
+                                key={item.id}
+                                data-aos="fade-up"
+                                data-aos-delay={index * 150}
+                            >
+                                <div className={item.atual ? "timeline-h-dot atual" : "timeline-h-dot passado"}></div>
+                                <span className="timeline-h-date">{item.periodo}</span>
 
-                                    <div className={`org-card timeline-h-card ${item.atual ? '' : 'card-passado'}`}>
-                                        <div className="d-flex justify-content-between align-items-start mb-1">
-                                            <h5 className="fw-bold mb-0">{item.empresa}</h5>
-                                            {item.atual && <span className="badge-atual">Atual</span>}
-                                        </div>
-                                        <p className="tag mb-2">{item.cargo}</p>
-                                        <p className="card-text mb-3">{item.descricao}</p>
+                                <div className={item.atual ? "org-card timeline-h-card" : "org-card timeline-h-card card-passado"}>
+                                    <div className="d-flex justify-content-between align-items-start mb-1">
+                                        <h5 className="fw-bold mb-0">{item.empresa}</h5>
+                                        {item.atual && <span className="badge-atual">Atual</span>}
                                     </div>
+                                    <p className="tag mb-2">{item.cargo}</p>
+                                    <p className="card-text mb-3">{item.descricao}</p>
                                 </div>
-                            ))}
-                        </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
