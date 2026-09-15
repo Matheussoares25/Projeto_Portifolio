@@ -55,13 +55,13 @@ const projetos = [
         github: ""
     },
     {
-            id: "SisAlu",
-            title: "Pagina SisAlu- SisAlu - Sistema de Gestão Escolar",
-            imag:  "sisalu",
-            tecnologias: "Web / HTML / JavaScript / css",
-            descricao: "Um Protótipo da pagina web da Sisalu desenvolvido durante meu estagio, desenvolvido com objeto de aprimorar minhas habilidades com Html,css e algumas bibliotecas como o Bootstrap.",
-            video: "",
-            github: "",
+        id: "SisAlu",
+        title: "Pagina SisAlu- SisAlu - Sistema de Gestão Escolar",
+        imag: "sisalu",
+        tecnologias: "Web / HTML / JavaScript / css",
+        descricao: "Um Protótipo da pagina web da Sisalu desenvolvido durante meu estagio, desenvolvido com objeto de aprimorar minhas habilidades com Html,css e algumas bibliotecas como o Bootstrap.",
+        video: "",
+        github: "",
 
     }
     // {
@@ -103,7 +103,7 @@ const formacao = [
         curso: "Análise e Desenvolvimento de Sistemas",
         instituicao: "Universidade Metodista de São Paulo",
         status: "Em andamento",
-        progresso: 30,
+        progresso: 20,
         descricao: "Graduação com foco em engenharia e arquitetura de software, ampliando os conhecimentos técnicos adquiridos na formação anterior."
     },
     {
@@ -115,7 +115,26 @@ const formacao = [
         descricao: "Formação técnica com foco em lógica de programação, orientação a objetos e bancos de dados. Desenvolvimento de projetos práticos em C#, PHP e ecossistema web (HTML, CSS, JavaScript)."
     }
 
-];;
+];
+
+const carreira = [
+    {
+        id: "nauta",
+        empresa: "Nauta Software",
+        cargo: "Desenvolvedor Full Stack",
+        periodo: "20XX - 20XX",
+        descricao: "Evolução no desenvolvimento web Full Stack, atuando no código, banco de dados MySQL e otimização de relatórios.",
+        atual: false
+    },
+    {
+        id: "masterpumps",
+        empresa: "Masterpumps",
+        cargo: "Desenvolvedor C# / Suporte TI",
+        periodo: "20XX - Atual",
+        descricao: "Desenvolvimento de soluções desktop em C#, integrando microsserviços e APIs externas para automação de processos. Atuação em suporte e infraestrutura de TI N1/N2.",
+        atual: true
+    },
+];
 
 function Home() {
     const [skillSelecionada, setSkillSelecionada] = useState("");
@@ -151,7 +170,7 @@ function Home() {
                             <li className="nav-item"><a className="nav-link" href="#projetos">Projetos</a></li>
                             <li className="nav-item"><a className="nav-link" href="#Carreira">Carreira</a></li>
                             <li className="nav-item"><a className="nav-link" href="#formacao">Formações</a></li>
-                            <li className="nav-item"><a className="nav-link" href="#contato">buContato</a></li>
+                            <li className="nav-item"><a className="nav-link" href="#contato">Contato</a></li>
 
 
                         </ul>
@@ -315,9 +334,9 @@ function Home() {
                 </div>
             </section>
 
-            <section>
+            <section id="formacao">
                 <div className="container">
-                    <div className="eyebrow"><i className="bi bi-mortarboard-fill"></i> FORMAÇÃO</div>
+                    <div className="eyebrow" ><i className="bi bi-mortarboard-fill"></i> FORMAÇÃO</div>
                     <h2 className="section-title">Vida Acadêmica</h2>
 
                     <div className="timeline col-lg-8 mx-auto">
@@ -357,8 +376,36 @@ function Home() {
                 </div>
             </section>
 
-            <section>
-                <h2 className="section-title" id="Carreira">Carreira</h2>
+            <section id="carreira" className="py-5">
+                <div className="container" id="Carreira">
+                    <div className="eyebrow"><i className="bi bi-briefcase-fill"></i> EXPERIÊNCIA</div>
+                    <h2 className="section-title">Carreira</h2>
+
+                    <div className="timeline-h-wrapper">
+                        <div className="timeline-h">
+                            {carreira.map((item, index) => (
+                                <div
+                                    className="timeline-h-item"
+                                    key={item.id}
+                                    data-aos="fade-up"
+                                    data-aos-delay={index * 150}
+                                >
+                                    <div className={`timeline-h-dot ${item.atual ? 'atual' : 'passado'}`}></div>
+                                    <span className="timeline-h-date">{item.periodo}</span>
+
+                                    <div className={`org-card timeline-h-card ${item.atual ? '' : 'card-passado'}`}>
+                                        <div className="d-flex justify-content-between align-items-start mb-1">
+                                            <h5 className="fw-bold mb-0">{item.empresa}</h5>
+                                            {item.atual && <span className="badge-atual">Atual</span>}
+                                        </div>
+                                        <p className="tag mb-2">{item.cargo}</p>
+                                        <p className="card-text mb-3">{item.descricao}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </section>
 
             {/* Contato */}

@@ -7,7 +7,7 @@
   --accent: #3A86FF;        /* azul elétrico - destaque, ícones, links, tags */
   --accent-soft: rgba(58, 134, 255, 0.12);
   --text-light: #E9ECEF;
-  --text-muted: #adb8ce;
+  --text-muted: #8A94A6;
 
   --font-display: 'Orbitron', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -248,7 +248,7 @@ section {
   background-color: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
-  padding: 1.75rem;
+  padding: 1.06rem;
 }
 
 .repo-pill {
@@ -407,6 +407,106 @@ section {
   color: var(--text-muted);
   margin-top: 0.4rem;
   display: inline-block;
+}
+
+/* ===== Timeline Horizontal (Carreira) ===== */
+.timeline-h-wrapper {
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.timeline-h {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  position: relative;
+  min-width: 600px;
+  padding: 2.5rem 1rem 0;
+}
+
+.timeline-h::before {
+  content: "";
+  position: absolute;
+  top: 2.5rem;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--border-subtle), var(--accent));
+}
+
+.timeline-h-item {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.timeline-h-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid var(--bg-base);
+  margin-bottom: 0.6rem;
+  z-index: 2;
+}
+
+.timeline-h-dot.passado {
+  background-color: var(--text-muted);
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+.timeline-h-dot.atual {
+  background-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* card de experiência passada: mais apagado, sem destaque */
+.card-passado {
+  opacity: 0.7;
+  filter: grayscale(20%);
+}
+
+.card-passado:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* badge "Atual" no card em destaque */
+.badge-atual {
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 20px;
+  border: 1px solid var(--accent);
+  white-space: nowrap;
+}
+
+.timeline-h-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.timeline-h-card {
+  width: 100%;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .timeline-h {
+    min-width: 500px;
+  }
 }
 
 /* ===== Rodapé ===== */
