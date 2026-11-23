@@ -4,7 +4,7 @@ const projetos = [
         id: "PTE",
         title: "Plataforma de Treinamento e Evolução - versão Etec",
         imag: "Marca-1",
-        tecnologias: "JavaScript / HTML / CSS / GIT / Web",
+        tecnologias: "JavaScript / HTML / CSS / GIT / Web / PHP",
         descricao: "Breve descrição do que o projeto faz.",
         video: "Video1.mp4",
         github: "https://github.com/Matheussoares25/PTE"
@@ -37,15 +37,6 @@ const projetos = [
 
     },
     {
-        id: "Hstransportes",
-        title: "HsTransportes",
-        imag: "Hstransporte",
-        tecnologias: "PHP / WEB",
-        descricao: "",
-        video: "",
-
-    },
-    {
         id: "ConectServices",
         title: "ConectServices - Abertura de Chamados e Serviços",
         imag: "apipte",
@@ -63,7 +54,16 @@ const projetos = [
         video: "",
         github: "",
 
-    }
+    },
+    {
+        id:"ASCII",
+            title:"Conversor codigo ASII",
+        imag:"ascimeto",
+            tecnologias:"Aspnet / .Net",
+        descricao: " Projeto desenvolvido e entregue na materia de POO na faculdade de Analise e desenolvimento de sistemas",
+            video:"1123.mp4",
+        github:"https://github.com/Matheussoares25/ASCII_POO"
+     }
     // {
     //     id:
     //     title:
@@ -391,7 +391,6 @@ function Home() {
                             >
                                 <div className={item.atual ? "timeline-h-dot atual" : "timeline-h-dot passado"}></div>
                                 <span className="timeline-h-date">{item.periodo}</span>
-
                                 <div className={item.atual ? "org-card timeline-h-card" : "org-card timeline-h-card card-passado"}>
                                     <div className="d-flex justify-content-between align-items-start mb-1">
                                         <h5 className="fw-bold mb-0">{item.empresa}</h5>

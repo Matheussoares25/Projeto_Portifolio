@@ -223,9 +223,10 @@ section {
 }
 
 .card-img-top {
-  height: 200px;
-  object-fit: cover;
+  height: 180px;
   width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .card:hover {
